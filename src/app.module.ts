@@ -1,9 +1,18 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { MongooseModule } from "@nestjs/mongoose";
+import { UserModule } from "./users/user.module";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
-  imports: [],
+  imports: [
+    MongooseModule.forRoot(
+      "mongodb+srv://elegantfood:1RVrVU3mqQRQ7PT5@leandroblog.xqhhter.mongodb.net/?retryWrites=true&w=majority",
+    ),
+    UserModule,
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

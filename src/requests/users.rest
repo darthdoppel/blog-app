@@ -1,0 +1,15 @@
+### GET para traer los usuarios
+
+GET http://localhost:3000/users
+
+
+### POST para crear un usuario
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Tostada",
+    "email": "tostada@gmail.com",
+    "password": "12341234"
+}
