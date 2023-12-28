@@ -4,6 +4,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { User } from "./user.schema";
 import * as bcrypt from "bcrypt";
+import { UpdateUserDto } from "./dto/update-user.dto";
 
 @Injectable()
 export class UserService {
@@ -22,7 +23,40 @@ export class UserService {
     return createdUser.save();
   }
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.userModel.findOne({ username: username });
+  async findOne(id: string): Promise<User | undefined> {
+    return this.userModel.findById(id);
+  }
+
+  async findOneByUsername(username: string): Promise<User | undefined> {
+    return this.userModel.findOne({ name: username });
+  }
+
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    const user = await this.userModel.findById(id);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    if (updateUserDto.name) {
+      user.name = updateUserDto.name;
+    }
+    if (updateUserDto.email) {
+      user.email = updateUserDto.email;
+    }
+    if (updateUserDto.password) {
+      user.password = await bcrypt.hash(updateUserDto.password, 10);
+    }
+    if (updateUserDto.isAdmin !== undefined) {
+      user.isAdmin = updateUserDto.isAdmin;
+    }
+    return user.save();
+  }
+
+  async delete(id: string): Promise<User> {
+    const user = await this.userModel.findById(id);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    await this.userModel.deleteOne({ _id: id });
+    return user;
   }
 }

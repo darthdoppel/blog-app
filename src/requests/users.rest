@@ -1,7 +1,24 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzg4NTczLCJleHAiOjE3MDM3OTIxNzN9.xK9l0bBp355uOcw9U966VhvSGYRk8EYAO9OiOM5N6ps
 
+
+### Get por ID
+
+GET http://localhost:3000/users/658d9185e15401877ec79a3f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZsZXJrZW4iLCJzdWIiOiI2NThkOTE4NWUxNTQwMTg3N2VjNzlhM2YiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDM3NzY5NzAsImV4cCI6MTcwMzc4MDU3MH0.iOIGJs6yqt9OX-3Cq9dyCXf3EH8wdgZQRZaPxfOab8k
+
+
+### Login de usuario
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Admin",
+    "password": "12341234"
+}
 
 ### POST para crear un usuario
 
@@ -9,7 +26,25 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Tostada",
-    "email": "tostada@gmail.com",
+    "name": "Admin",
+    "email": "admin@gmail.com",
     "password": "12341234"
 }
+
+
+
+### PATCH para actualizar un usuario
+
+PATCH http://localhost:3000/users/658d99d70d8cc33e9c252d18
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzg4NTczLCJleHAiOjE3MDM3OTIxNzN9.xK9l0bBp355uOcw9U966VhvSGYRk8EYAO9OiOM5N6ps
+
+{
+    "name": "Flerken",
+    "email": "flerken@gmail.com"
+}
+
+### DELETE para borrar un usuario
+
+DELETE http://localhost:3000/users/658d92e89f695b6790ee1358
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZsZXJrZW4iLCJzdWIiOiI2NThkOTE4NWUxNTQwMTg3N2VjNzlhM2YiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDM3NzY5NzAsImV4cCI6MTcwMzc4MDU3MH0.iOIGJs6yqt9OX-3Cq9dyCXf3EH8wdgZQRZaPxfOab8k

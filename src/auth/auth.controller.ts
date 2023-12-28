@@ -1,4 +1,10 @@
-import { Controller, Request, Post, UseGuards } from "@nestjs/common";
+import {
+  Controller,
+  Request,
+  Post,
+  UseGuards,
+  UnauthorizedException,
+} from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { LocalAuthGuard } from "./local-auth.guard";
 
@@ -14,6 +20,14 @@ export class AuthController {
 
   @Post("validate")
   async validate(@Request() req) {
-    return this.authService.validateUser(req.body.username, req.body.password);
+    const user = await this.authService.validateUser(
+      req.body.username,
+      req.body.password,
+    );
+    if (user) {
+      return user;
+    } else {
+      throw new UnauthorizedException();
+    }
   }
 }
