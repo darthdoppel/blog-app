@@ -1,7 +1,7 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzg4NTczLCJleHAiOjE3MDM3OTIxNzN9.xK9l0bBp355uOcw9U966VhvSGYRk8EYAO9OiOM5N6ps
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzk3MTMxLCJleHAiOjE3MDM4MDA3MzF9.sX4L03Fq2wf5opYLu5zvOgZ6KWayg50023iBARFJLy4
 
 
 ### Get por ID
@@ -17,6 +17,16 @@ Content-Type: application/json
 
 {
     "username": "Admin",
+    "password": "12341234"
+}
+
+### Login de usuario no admin
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Tostada",
     "password": "12341234"
 }
 

@@ -23,6 +23,11 @@ import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiOperation({ summary: "Obtener todos los usuarios" })
+  @ApiResponse({
+    status: 200,
+    description: "Devuelve todos los usuarios.",
+  })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @IsAdmin(true)
   @Get()
@@ -30,8 +35,8 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @ApiOperation({ summary: "Get user by id" })
-  @ApiResponse({ status: 200, description: "The found record" })
+  @ApiOperation({ summary: "Obtener usuario por id" })
+  @ApiResponse({ status: 200, description: "Devuelve el usuario." })
   @UseGuards(JwtAuthGuard)
   @Get(":id")
   async findOne(
@@ -48,20 +53,20 @@ export class UserController {
     };
   }
 
-  @ApiOperation({ summary: "Create user" })
+  @ApiOperation({ summary: "Creación de usuario" })
   @ApiResponse({
     status: 201,
-    description: "The record has been successfully created.",
+    description: "El usuario ha sido creado correctamente.",
   })
   @Post()
   async create(@Body() user: User) {
     return this.userService.create(user);
   }
 
-  @ApiOperation({ summary: "Update user" })
+  @ApiOperation({ summary: "Actualización de usuario" })
   @ApiResponse({
     status: 200,
-    description: "The record has been successfully updated.",
+    description: "El usuario ha sido actualizado correctamente.",
   })
   @UseGuards(JwtAuthGuard)
   @Patch(":id")
@@ -77,6 +82,11 @@ export class UserController {
     }
   }
 
+  @ApiOperation({ summary: "Eliminar usuario" })
+  @ApiResponse({
+    status: 200,
+    description: "El usuario ha sido eliminado correctamente.",
+  })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @IsAdmin(true)
   @Delete(":id")
