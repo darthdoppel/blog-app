@@ -5,10 +5,25 @@ import { Model } from "mongoose";
 import { User } from "./user.schema";
 import * as bcrypt from "bcrypt";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { JwtService } from "@nestjs/jwt";
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<User>,
+    private jwtService: JwtService,
+  ) {}
+
+  async login(user: any) {
+    const payload = {
+      username: user._doc.name,
+      sub: user._doc._id,
+      isAdmin: user._doc.isAdmin,
+    };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
 
   async findAll(): Promise<User[]> {
     return this.userModel.find().exec();

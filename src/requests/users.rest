@@ -1,18 +1,18 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzk3MTMxLCJleHAiOjE3MDM4MDA3MzF9.sX4L03Fq2wf5opYLu5zvOgZ6KWayg50023iBARFJLy4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzA3OTE3LCJleHAiOjE3MDQzMTE1MTd9.r_6AbMwS0dkYgIonqtchgvR5u6lvzt39FI4wU-JiVWg
 
 
 ### Get por ID
 
 GET http://localhost:3000/users/658d9185e15401877ec79a3f
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZsZXJrZW4iLCJzdWIiOiI2NThkOTE4NWUxNTQwMTg3N2VjNzlhM2YiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDM3NzY5NzAsImV4cCI6MTcwMzc4MDU3MH0.iOIGJs6yqt9OX-3Cq9dyCXf3EH8wdgZQRZaPxfOab8k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzA3OTE3LCJleHAiOjE3MDQzMTE1MTd9.r_6AbMwS0dkYgIonqtchgvR5u6lvzt39FI4wU-JiVWg
 
 
 ### Login de usuario
 
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ### Login de usuario no admin
 
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
@@ -56,5 +56,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 
 ### DELETE para borrar un usuario
 
-DELETE http://localhost:3000/users/658d92e89f695b6790ee1358
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZsZXJrZW4iLCJzdWIiOiI2NThkOTE4NWUxNTQwMTg3N2VjNzlhM2YiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDM3NzY5NzAsImV4cCI6MTcwMzc4MDU3MH0.iOIGJs6yqt9OX-3Cq9dyCXf3EH8wdgZQRZaPxfOab8k
+DELETE http://localhost:3000/users/659593252a7db2d1270bb8ea
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzAwODA5LCJleHAiOjE3MDQzMDQ0MDl9.XDTcffxAJPuJ-IYAXFqNhl68_sudNZzhscNH3MLm_NE

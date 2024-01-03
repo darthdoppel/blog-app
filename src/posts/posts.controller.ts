@@ -12,26 +12,49 @@ import {
   UnauthorizedException,
   Query,
 } from "@nestjs/common";
-import { PostsService } from "./posts.service";
+import { PostsService, RequestWithUser } from "./posts.service";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
-import { ApiOperation, ApiResponse } from "@nestjs/swagger";
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from "@nestjs/swagger";
 import { JwtAuthGuard } from "../guards/jwt-auth.guard";
 import { Post } from "./schemas/post.schema";
 
+@ApiTags("posts")
 @Controller("posts")
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  @ApiOperation({ summary: "Crear post" })
+  @ApiOperation({
+    summary: "Crear post",
+    description:
+      "Crea un nuevo post. El ID del autor se extrae del token de autenticación JWT proporcionado. No es necesario enviar el ID del autor en el cuerpo de la solicitud.",
+  })
   @ApiResponse({
     status: 201,
     description: "El post ha sido creado correctamente.",
   })
+  @ApiResponse({
+    status: 400,
+    description:
+      "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
+  })
+  @ApiResponse({
+    status: 401,
+    description: "No autorizado. Se requiere un token de autenticación válido.",
+  })
+  @ApiBearerAuth("JWT")
+  @UseGuards(JwtAuthGuard)
   @PostMethod()
-  create(@Body() createPostDto: CreatePostDto) {
-    return this.postsService.create(createPostDto);
+  create(@Body() createPostDto: CreatePostDto, @Req() req: RequestWithUser) {
+    return this.postsService.create(createPostDto, req);
   }
+
+  ///////
 
   @ApiOperation({ summary: "Obtener todos los posts" })
   @ApiResponse({
@@ -42,6 +65,8 @@ export class PostsController {
   async findAll(@Query("limit") limit: number): Promise<Post[]> {
     return this.postsService.findAll(limit);
   }
+
+  ///////
 
   @ApiOperation({ summary: "Buscar posts" })
   @ApiResponse({
@@ -55,6 +80,8 @@ export class PostsController {
   ): Promise<Post[]> {
     return this.postsService.search(query, limit);
   }
+
+  ///////
 
   @ApiOperation({ summary: "Filtrar posts" })
   @ApiResponse({
@@ -70,12 +97,16 @@ export class PostsController {
     return this.postsService.filter(category, author, limit);
   }
 
+  ///////
+
   @ApiOperation({ summary: "Obtener post por id" })
   @ApiResponse({ status: 200, description: "Devuelve el post." })
   @Get(":id")
   findOne(@Param("id") id: string) {
     return this.postsService.findOne(id);
   }
+
+  ///////
 
   @ApiOperation({ summary: "Actualizar post" })
   @ApiResponse({
@@ -104,6 +135,8 @@ export class PostsController {
       throw new UnauthorizedException();
     }
   }
+
+  ///////
 
   @ApiOperation({ summary: "Eliminar post" })
   @ApiResponse({
@@ -135,6 +168,8 @@ export class PostsController {
       throw new UnauthorizedException();
     }
   }
+
+  ///////
 
   @ApiOperation({ summary: "Obtener posts de un usuario" })
   @ApiResponse({
