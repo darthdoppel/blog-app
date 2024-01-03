@@ -25,7 +25,11 @@ export class UserService {
     };
   }
 
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<Pick<User, "id" | "name" | "email">[]> {
+    return this.userModel.find().select("_id name email").exec();
+  }
+
+  async findAllAdmin(): Promise<User[]> {
     return this.userModel.find().exec();
   }
 

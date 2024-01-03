@@ -21,6 +21,8 @@ import {
   ApiResponse,
   ApiTags,
   ApiQuery,
+  ApiParam,
+  ApiBody,
 } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../guards/jwt-auth.guard";
 import { Post } from "./schemas/post.schema";
@@ -147,7 +149,11 @@ export class PostsController {
 
   ///////
 
-  @ApiOperation({ summary: "Actualizar post" })
+  @ApiOperation({
+    summary: "Actualizar post",
+    description:
+      "Permite a un usuario actualizar su propio post o a un administrador actualizar cualquier post.",
+  })
   @ApiResponse({
     status: 200,
     description: "El post ha sido actualizado correctamente.",
@@ -157,6 +163,23 @@ export class PostsController {
     description:
       "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
   })
+  @ApiResponse({
+    status: 401,
+    description:
+      "No autorizado. Solo los usuarios pueden actualizar su propio post o los administradores pueden actualizar cualquier post.",
+  })
+  @ApiParam({
+    name: "id",
+    required: true,
+    description: "Identificador único del post",
+    type: String,
+  })
+  @ApiBody({
+    type: UpdatePostDto,
+    description:
+      "Datos del post a actualizar. Al ser un PATCH, no es necesario enviar todos los campos.",
+  })
+  @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard)
   @Patch(":id")
   async update(
@@ -182,7 +205,11 @@ export class PostsController {
 
   ///////
 
-  @ApiOperation({ summary: "Eliminar post" })
+  @ApiOperation({
+    summary: "Eliminar post",
+    description:
+      "Permite a un usuario eliminar su propio post o a un administrador eliminar cualquier post.",
+  })
   @ApiResponse({
     status: 200,
     description: "El post ha sido eliminado correctamente.",
@@ -192,6 +219,18 @@ export class PostsController {
     description:
       "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
   })
+  @ApiResponse({
+    status: 401,
+    description:
+      "No autorizado. Solo los usuarios pueden eliminar su propio post o los administradores pueden eliminar cualquier post.",
+  })
+  @ApiParam({
+    name: "id",
+    required: true,
+    description: "Identificador único del post",
+    type: String,
+  })
+  @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard)
   @Delete(":id")
   async remove(
@@ -220,7 +259,10 @@ export class PostsController {
 
   ///////
 
-  @ApiOperation({ summary: "Obtener posts de un usuario" })
+  @ApiOperation({
+    summary: "Obtener posts de un usuario",
+    description: "Devuelve todos los posts de un usuario.",
+  })
   @ApiResponse({
     status: 200,
     description: "Devuelve los posts del usuario.",
@@ -228,6 +270,12 @@ export class PostsController {
   @ApiResponse({
     status: 404,
     description: "No se encontraron posts para el usuario.",
+  })
+  @ApiParam({
+    name: "userId",
+    required: true,
+    description: "Identificador único del usuario",
+    type: String,
   })
   @Get("user/:userId")
   async findByUser(

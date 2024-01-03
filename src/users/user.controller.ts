@@ -93,7 +93,7 @@ export class UserController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @IsAdmin(true)
   @Get()
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<Pick<User, "id" | "name" | "email">[]> {
     return this.userService.findAll();
   }
 
