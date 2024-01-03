@@ -13,7 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRvc
 
 ### Obtener todos los posts con paginación
 
-GET http://localhost:3000/posts?limit=20
+GET http://localhost:3000/posts?limit=2
 
 ### Obtener un post por id
 
@@ -40,8 +40,8 @@ GET http://localhost:3000/posts/user/658d99d70d8cc33e9c252d18
 
 ### Search posts
 
-GET http://localhost:3000/posts/search?q=post&limit=5
+GET http://localhost:3000/posts/search?q=query&limit=5
 
 ### Filter posts by category and author
 
-GET http://localhost:3000/posts/filter?category=sustainability&limit=5
+GET http://localhost:3000/posts/filter?category=nature

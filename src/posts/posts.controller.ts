@@ -20,6 +20,7 @@ import {
   ApiOperation,
   ApiResponse,
   ApiTags,
+  ApiQuery,
 } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../guards/jwt-auth.guard";
 import { Post } from "./schemas/post.schema";
@@ -56,13 +57,23 @@ export class PostsController {
 
   ///////
 
-  @ApiOperation({ summary: "Obtener todos los posts" })
+  @ApiOperation({
+    summary: "Obtener todos los posts",
+    description:
+      "Recupera todos los posts con la opción de paginación. Si no se especifica un límite, el valor predeterminado es 10.",
+  })
   @ApiResponse({
     status: 200,
-    description: "Devuelve todos los posts.",
+    description: "Devuelve una lista de posts.",
+  })
+  @ApiQuery({
+    name: "limit",
+    required: false,
+    description: "Número máximo de posts a devolver. Valor predeterminado: 10",
+    type: Number,
   })
   @Get()
-  async findAll(@Query("limit") limit: number): Promise<Post[]> {
+  async findAll(@Query("limit") limit: number = 10): Promise<Post[]> {
     return this.postsService.findAll(limit);
   }
 
@@ -73,9 +84,22 @@ export class PostsController {
     status: 200,
     description: "Devuelve los resultados de la búsqueda de posts.",
   })
+  @ApiQuery({
+    name: "query",
+    required: true,
+    description: "El término de búsqueda para los posts",
+    type: String,
+  })
+  @ApiQuery({
+    name: "limit",
+    required: false,
+    description:
+      "Número máximo de posts a devolver en los resultados de búsqueda. Valor predeterminado: 10",
+    type: Number,
+  })
   @Get("/search")
   async search(
-    @Query("q") query: string,
+    @Query("query") query: string,
     @Query("limit") limit: number = 10,
   ): Promise<Post[]> {
     return this.postsService.search(query, limit);
@@ -83,23 +107,38 @@ export class PostsController {
 
   ///////
 
-  @ApiOperation({ summary: "Filtrar posts" })
+  @ApiOperation({
+    summary: "Filtrar posts.",
+    description: "No es necesario completar ambos campos.",
+  })
   @ApiResponse({
     status: 200,
-    description: "Devuelve los resultados del filtrado de posts.",
+    description:
+      "Devuelve los resultados del filtrado de posts por categoría y/o autor.",
+  })
+  @ApiQuery({
+    name: "category",
+    required: false,
+    description: "La categoría por la que filtrar",
+    type: String,
+  })
+  @ApiQuery({
+    name: "author",
+    required: false,
+    description: "El ID del autor por el que filtrar",
+    type: String,
   })
   @Get("/filter")
   async filter(
     @Query("category") category: string,
     @Query("author") author: string,
-    @Query("limit") limit: number = 10,
   ): Promise<Post[]> {
-    return this.postsService.filter(category, author, limit);
+    return this.postsService.filter(category, author);
   }
 
   ///////
 
-  @ApiOperation({ summary: "Obtener post por id" })
+  @ApiOperation({ summary: "Obtener post por ID" })
   @ApiResponse({ status: 200, description: "Devuelve el post." })
   @Get(":id")
   findOne(@Param("id") id: string) {
@@ -112,6 +151,11 @@ export class PostsController {
   @ApiResponse({
     status: 200,
     description: "El post ha sido actualizado correctamente.",
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
   })
   @UseGuards(JwtAuthGuard)
   @Patch(":id")
@@ -142,6 +186,11 @@ export class PostsController {
   @ApiResponse({
     status: 200,
     description: "El post ha sido eliminado correctamente.",
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
   })
   @UseGuards(JwtAuthGuard)
   @Delete(":id")
@@ -175,6 +224,10 @@ export class PostsController {
   @ApiResponse({
     status: 200,
     description: "Devuelve los posts del usuario.",
+  })
+  @ApiResponse({
+    status: 404,
+    description: "No se encontraron posts para el usuario.",
   })
   @Get("user/:userId")
   async findByUser(

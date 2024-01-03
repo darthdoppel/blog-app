@@ -80,11 +80,7 @@ export class PostsService {
       .exec();
   }
 
-  async filter(
-    category: string,
-    author: string,
-    limit: number = 10,
-  ): Promise<Post[]> {
+  async filter(category: string, author: string): Promise<Post[]> {
     const filter = {};
     if (category) {
       filter["categories"] = category;
@@ -92,6 +88,6 @@ export class PostsService {
     if (author) {
       filter["author"] = author;
     }
-    return this.postModel.find(filter).limit(Number(limit)).exec();
+    return this.postModel.find(filter).exec();
   }
 }
