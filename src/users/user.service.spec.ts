@@ -2,10 +2,16 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { UserService } from "./user.service";
 import { getModelToken } from "@nestjs/mongoose";
 import { User } from "./user.schema";
+import { JwtService } from "@nestjs/jwt";
 
 describe("UserService", () => {
   let userService: UserService;
   let userModel: any;
+
+  // Mock JwtService
+  const mockJwtService = () => ({
+    sign: jest.fn(),
+  });
 
   // Mock UserModel
   const mockUserModel = () => ({
@@ -21,6 +27,10 @@ describe("UserService", () => {
         {
           provide: getModelToken(User.name),
           useFactory: mockUserModel,
+        },
+        {
+          provide: JwtService,
+          useFactory: mockJwtService,
         },
       ],
     }).compile();

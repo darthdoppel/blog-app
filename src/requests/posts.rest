@@ -3,17 +3,17 @@
 
 POST http://localhost:3000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRvc3RhZGEiLCJzdWIiOiI2NThkOTdiMWVkNGI0MDE2NmM0YTBjMDAiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA0MzA5Nzk0LCJleHAiOjE3MDQzMTMzOTR9.n8t9NBtEAUFWUrfSZDf54cD9taU6hKgvgbtozHstad0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU
 
 {
-    "title": "Post de Tostada un michi blanco y negro",
-    "content": "Este es un mensaje de Tostada",
-    "categories": ["sustainability", "nature"]
+    "title": "Post de Admin de prueba",
+    "content": "Este es un mensaje del Admin",
+    "categories": ["nature", "animals"]
 }
 
 ### Obtener todos los posts con paginación
 
-GET http://localhost:3000/posts?limit=2
+GET http://localhost:3000/posts?limit=10
 
 ### Obtener un post por id
 
@@ -40,7 +40,7 @@ GET http://localhost:3000/posts/user/658d99d70d8cc33e9c252d18
 
 ### Search posts
 
-GET http://localhost:3000/posts/search?q=query&limit=5
+GET http://localhost:3000/posts/search?q=tostada
 
 ### Filter posts by category and author
 

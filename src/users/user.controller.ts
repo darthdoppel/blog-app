@@ -29,7 +29,7 @@ import {
   ApiBearerAuth,
   ApiTags,
 } from "@nestjs/swagger";
-import { LocalAuthGuard } from "src/auth/local-auth.guard";
+import { LocalAuthGuard } from "../auth/local-auth.guard";
 import { LoginDto } from "./dto/login.dto";
 import { Types } from "mongoose";
 import { UserResponseDto } from "./dto/user-response.dto";

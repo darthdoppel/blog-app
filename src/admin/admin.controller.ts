@@ -6,9 +6,9 @@ import {
   ApiResponse,
   ApiTags,
 } from "@nestjs/swagger";
-import { JwtAuthGuard } from "src/guards/jwt-auth.guard";
-import { RolesGuard } from "src/guards/roles.guard";
-import { IsAdmin } from "src/decorators/roles.decorator";
+import { JwtAuthGuard } from "../guards/jwt-auth.guard";
+import { RolesGuard } from "../guards/roles.guard";
+import { IsAdmin } from "../decorators/roles.decorator";
 
 @ApiTags("admin")
 @Controller("admin")

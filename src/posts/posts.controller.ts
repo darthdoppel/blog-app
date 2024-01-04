@@ -87,7 +87,7 @@ export class PostsController {
     description: "Devuelve los resultados de la búsqueda de posts.",
   })
   @ApiQuery({
-    name: "query",
+    name: "q",
     required: true,
     description: "El término de búsqueda para los posts",
     type: String,
@@ -101,7 +101,7 @@ export class PostsController {
   })
   @Get("/search")
   async search(
-    @Query("query") query: string,
+    @Query("q") query: string,
     @Query("limit") limit: number = 10,
   ): Promise<Post[]> {
     return this.postsService.search(query, limit);

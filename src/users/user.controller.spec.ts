@@ -17,9 +17,9 @@ describe("UserController (e2e)", () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    // Login and get JWT token
+    // Login and get JWT admin token
     const response = await request(app.getHttpServer())
-      .post("/auth/login")
+      .post("/users/login")
       .send({ username: "Admin", password: "12341234" });
 
     token = response.body.access_token;
@@ -34,7 +34,7 @@ describe("UserController (e2e)", () => {
 
   it("/users/:id (GET)", () => {
     return request(app.getHttpServer())
-      .get("/users/658d9185e15401877ec79a3f")
+      .get("/users/658d97b1ed4b40166c4a0c00")
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });
@@ -42,7 +42,7 @@ describe("UserController (e2e)", () => {
   it("/users (GET) non-admin", async () => {
     // Login as non-admin user and get token
     const response = await request(app.getHttpServer())
-      .post("/auth/login")
+      .post("/users/login")
       .send({ username: "Tostada", password: "12341234" });
 
     const nonAdminToken = response.body.access_token;
@@ -57,14 +57,14 @@ describe("UserController (e2e)", () => {
   it("/users/:id (GET) non-admin", async () => {
     // Login as non-admin user and get token
     const response = await request(app.getHttpServer())
-      .post("/auth/login")
+      .post("/users/login")
       .send({ username: "Tostada", password: "12341234" });
 
     const nonAdminToken = response.body.access_token;
 
-    // Make request with non-admin token and expect 403
+    // Make request with non-admin token and expect 200
     return request(app.getHttpServer())
-      .get("/users/658d9185e15401877ec79a3f")
+      .get("/users/658d97b1ed4b40166c4a0c00")
       .set("Authorization", `Bearer ${nonAdminToken}`)
       .expect(200);
   });
