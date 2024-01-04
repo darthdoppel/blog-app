@@ -25,6 +25,26 @@ describe("UserController (e2e)", () => {
     token = response.body.access_token;
   });
 
+  // Create a new user
+  it("/users (POST)", async () => {
+    const createResponse = await request(app.getHttpServer())
+      .post("/users")
+      .send({
+        name: "Test User",
+        password: "12341234",
+        email: "test@gmail.com",
+      });
+
+    expect(createResponse.status).toBe(201);
+
+    // Delete created user
+    const id = createResponse.body.id;
+    await request(app.getHttpServer())
+      .delete(`/users/${id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .expect(200);
+  });
+
   it("/users (GET)", () => {
     return request(app.getHttpServer())
       .get("/users")

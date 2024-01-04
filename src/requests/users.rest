@@ -1,7 +1,7 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0Mzg2NjUzLCJleHAiOjE3MDQzOTAyNTN9.rI13Jh7ro4ADx2R6CS3X50wYWPMUSM9Ct45LwSnzauo
 
 
 ### Get usuario por ID
@@ -43,7 +43,7 @@ Content-Type: application/json
 
 ### PATCH para actualizar un usuario
 
-PATCH http://localhost:3000/users/658d99d70d8cc33e9c252d18
+PATCH http://localhost:3000/users/6596e0438d611c20b195b65a
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzg4NTczLCJleHAiOjE3MDM3OTIxNzN9.xK9l0bBp355uOcw9U966VhvSGYRk8EYAO9OiOM5N6ps
 
@@ -54,5 +54,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 
 ### DELETE para borrar un usuario
 
-DELETE http://localhost:3000/users/6596d4df4abf28b6fd5305c5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU
+DELETE http://localhost:3000/users/6596e0438d611c20b195b65a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0Mzg2NjUzLCJleHAiOjE3MDQzOTAyNTN9.rI13Jh7ro4ADx2R6CS3X50wYWPMUSM9Ct45LwSnzauo

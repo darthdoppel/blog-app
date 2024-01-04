@@ -8,6 +8,7 @@ dotenv.config();
 describe("PostsController (e2e)", () => {
   let app: INestApplication;
   let token: string;
+  let id: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -48,16 +49,52 @@ describe("PostsController (e2e)", () => {
       .expect(200);
   });
 
-  it("/posts (POST)", () => {
-    return request(app.getHttpServer())
+  // Create a new post
+  it("/posts (POST)", async () => {
+    const createResponse = await request(app.getHttpServer())
       .post("/posts")
       .set("Authorization", `Bearer ${token}`)
       .send({
-        title: "Test Post",
-        content: "Test Content",
+        title: "Test Post de Admin",
+        content: "Test Content de Admin",
         categories: ["Test Category"],
       })
-      .expect(201);
+      .expect(201); // Assuming 201 is the status code for successful creation
+
+    // Extract the ID of the newly created post
+    id = createResponse.body._id;
+  });
+
+  // GET the newly created post
+  it("/posts/:id (GET) newly created", () => {
+    return request(app.getHttpServer())
+      .get(`/posts/${id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .expect(200);
+  });
+
+  // DELETE newly created post
+  it("/posts/:id (DELETE) newly created", () => {
+    return request(app.getHttpServer())
+      .delete(`/posts/${id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .expect(200);
+  });
+
+  // try to DELETE a post that is not from the author
+  it("/posts/:id (DELETE) not author", async () => {
+    // Login as non-author user and get token
+    const response = await request(app.getHttpServer())
+      .post("/users/login")
+      .send({ username: "Tostada", password: "12341234" });
+
+    const nonAuthorToken = response.body.access_token;
+
+    // Make request with non-author token and expect 403
+    return request(app.getHttpServer())
+      .delete("/posts/658dc74e74722faf97232caa")
+      .set("Authorization", `Bearer ${nonAuthorToken}`)
+      .expect(401);
   });
 
   // PATCH request for updating post if the user is the author
@@ -110,8 +147,16 @@ describe("PostsController (e2e)", () => {
       .expect(200);
   });
 
-  // Search posts by author
-  it("/posts/search (GET) by author", () => {
+  // Filter posts by category
+  it("/posts/filter (GET)", () => {
+    return request(app.getHttpServer())
+      .get("/posts/filter?category=nature")
+      .set("Authorization", `Bearer ${token}`)
+      .expect(200);
+  });
+
+  // GET posts by author
+  it("/posts/users/:userId (GET)", () => {
     return request(app.getHttpServer())
       .get("/posts/user/658d99d70d8cc33e9c252d18")
       .set("Authorization", `Bearer ${token}`)
