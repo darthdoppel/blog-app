@@ -1,16 +1,16 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzA3OTE3LCJleHAiOjE3MDQzMTE1MTd9.r_6AbMwS0dkYgIonqtchgvR5u6lvzt39FI4wU-JiVWg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU
 
 
-### Get por ID
+### Get usuario por ID
 
-GET http://localhost:3000/users/658d9185e15401877ec79a3f
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzA3OTE3LCJleHAiOjE3MDQzMTE1MTd9.r_6AbMwS0dkYgIonqtchgvR5u6lvzt39FI4wU-JiVWg
+GET http://localhost:3000/users/658d97b1ed4b40166c4a0c00
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU
 
 
-### Login de usuario
+### Login de usuario admin
 
 POST http://localhost:3000/users/login
 Content-Type: application/json
@@ -36,12 +36,10 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Admin",
-    "email": "admin@gmail.com",
+    "name": "Mitski",
+    "email": "Mitski@gmail.com",
     "password": "12341234"
 }
-
-
 
 ### PATCH para actualizar un usuario
 
@@ -56,5 +54,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 
 ### DELETE para borrar un usuario
 
-DELETE http://localhost:3000/users/659593252a7db2d1270bb8ea
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzAwODA5LCJleHAiOjE3MDQzMDQ0MDl9.XDTcffxAJPuJ-IYAXFqNhl68_sudNZzhscNH3MLm_NE
+DELETE http://localhost:3000/users/6596d4df4abf28b6fd5305c5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU

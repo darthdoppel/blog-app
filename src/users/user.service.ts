@@ -14,11 +14,11 @@ export class UserService {
     private jwtService: JwtService,
   ) {}
 
-  async login(user: User) {
+  async login(user: any) {
     const payload = {
-      username: user.name,
-      sub: user._id,
-      isAdmin: user.isAdmin,
+      username: user._doc.name,
+      sub: user._doc._id,
+      isAdmin: user._doc.isAdmin,
     };
     return {
       access_token: this.jwtService.sign(payload),

@@ -32,6 +32,7 @@ import {
 import { LocalAuthGuard } from "src/auth/local-auth.guard";
 import { LoginDto } from "./dto/login.dto";
 import { Types } from "mongoose";
+import { UserResponseDto } from "./dto/user-response.dto";
 
 @ApiTags("usuarios")
 @Controller("users")
@@ -41,18 +42,39 @@ export class UserController {
 
   ///////
 
-  @ApiOperation({ summary: "Creación de usuario" })
+  @ApiOperation({
+    summary: "Creación de usuario",
+    description: "Permite a un usuario registrarse en la aplicación.",
+  })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: "El usuario ha sido creado correctamente.",
+    schema: {
+      example: {
+        id: "6596d4df4abf28b6fd5305c5",
+        name: "Mitski",
+        email: "Mitski@gmail.com",
+        isAdmin: false,
+      },
+    },
   })
   @ApiResponse({
     status: 409,
     description: "El usuario ya existe.",
   })
+  @ApiBody({
+    description: "Datos del usuario a crear",
+    type: User,
+  })
   @Post()
-  async create(@Body() user: User) {
-    return this.userService.create(user);
+  async create(@Body() user: User): Promise<UserResponseDto> {
+    const newUser = await this.userService.create(user);
+    return {
+      id: newUser._id,
+      name: newUser.name,
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
+    };
   }
 
   ////////

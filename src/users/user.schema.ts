@@ -4,19 +4,36 @@ import { Document } from "mongoose";
 
 @Schema()
 export class User extends Document {
-  @ApiProperty()
+  @ApiProperty({
+    required: true,
+    example: "John Doe",
+    description: "Nombre del usuario",
+  })
   @Prop({ required: true })
   name: string;
 
-  @ApiProperty()
-  @Prop()
+  @ApiProperty({
+    required: true,
+    example: "john.doe@example.com",
+    description: "Correo electrónico del usuario",
+  })
+  @Prop({ required: true })
   email: string;
 
-  @ApiProperty()
-  @Prop()
+  @ApiProperty({
+    required: true,
+    example: "password123",
+    description: "Contraseña del usuario",
+  })
+  @Prop({ required: true })
   password: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+    example: false,
+    description:
+      "Indica si el usuario es administrador. Por defecto es 'false'.",
+  })
   @Prop({ default: false })
   isAdmin: boolean;
 }
