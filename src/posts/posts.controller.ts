@@ -23,6 +23,7 @@ import {
   ApiQuery,
   ApiParam,
   ApiBody,
+  ApiUnauthorizedResponse,
 } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../guards/jwt-auth.guard";
 import { Post } from "./schemas/post.schema";
@@ -40,15 +41,42 @@ export class PostsController {
   @ApiResponse({
     status: 201,
     description: "El post ha sido creado correctamente.",
+    schema: {
+      example: {
+        title: "Título del post",
+        content: "Contenido del post",
+        category: ["Categoría 1", "Categoría 2"],
+        _id: "5f9d2c1b9d3e4b2b3c4d5e6f",
+        author: "5f9d2c1b9d3e4b2b3c4d5e6f",
+      },
+    },
   })
   @ApiResponse({
     status: 400,
     description:
       "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
   })
-  @ApiResponse({
-    status: 401,
+  @ApiUnauthorizedResponse({
     description: "No autorizado. Se requiere un token de autenticación válido.",
+    schema: {
+      oneOf: [
+        {
+          example: {
+            message: "Tienes que estar logeado para crear un nuevo post",
+            error: "Unauthorized",
+            statusCode: 401,
+          },
+        },
+        {
+          example: {
+            message:
+              "Su token es inválido o ha expirado. Por favor, inicie sesión de nuevo.",
+            error: "Unauthorized",
+            statusCode: 401,
+          },
+        },
+      ],
+    },
   })
   @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard)
@@ -84,12 +112,14 @@ export class PostsController {
   @ApiOperation({ summary: "Buscar posts" })
   @ApiResponse({
     status: 200,
-    description: "Devuelve los resultados de la búsqueda de posts.",
+    description:
+      "Devuelve los resultados de la búsqueda de posts. Si no se encuentran resultados, devuelve un mensaje indicándolo.",
   })
   @ApiQuery({
     name: "q",
     required: true,
-    description: "El término de búsqueda para los posts",
+    description:
+      "El término de búsqueda para los posts. Busca por título o contenido.",
     type: String,
   })
   @ApiQuery({
@@ -103,7 +133,7 @@ export class PostsController {
   async search(
     @Query("q") query: string,
     @Query("limit") limit: number = 10,
-  ): Promise<Post[]> {
+  ): Promise<Post[] | string> {
     return this.postsService.search(query, limit);
   }
 
@@ -111,7 +141,7 @@ export class PostsController {
 
   @ApiOperation({
     summary: "Filtrar posts.",
-    description: "No es necesario completar ambos campos.",
+    description: "No es necesario completar ambos campos. Solo uno es válido.",
   })
   @ApiResponse({
     status: 200,
@@ -134,7 +164,7 @@ export class PostsController {
   async filter(
     @Query("category") category: string,
     @Query("author") author: string,
-  ): Promise<Post[]> {
+  ): Promise<Post[] | string> {
     return this.postsService.filter(category, author);
   }
 

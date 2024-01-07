@@ -3,11 +3,10 @@
 
 POST http://localhost:3000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZjBhOThmYjU4NDI1ZjBmOTVmN2QiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA0MzkxMDE2LCJleHAiOjE3MDQzOTQ2MTZ9.QWFwleycgBxGHAOwr-TlOIF5uKsv3X9FewhkQ5Q2cfs
 
 {
-    "title": "Flerken y su Amistad con el Pájaro del Vecino",
-    "content": "Flerken hizo un nuevo amigo hoy, un pájaro curioso que se posó en su ventana. Una amistad inesperada.",
+    "title": "Flerken y su nuevo amigo",
+    "content": "Flerken nos presenta a su nuevo amigo, Tostada.",
     "categories": ["friendship", "animals"]
 }
 
@@ -46,4 +45,4 @@ GET http://localhost:3000/posts/search?q=tostada
 
 ### Filter posts by category and author
 
-GET http://localhost:3000/posts/filter?category=nature
+GET http://localhost:3000/posts/filter?author=6596f0a98fb58425f0f95f7d

@@ -21,12 +21,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: any) {
     if (!payload) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException(
+        "Tienes que estar logeado para crear un nuevo post",
+      );
     }
 
     const user = await this.userService.findOne(payload.sub);
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException("Usuario no encontrado");
     }
 
     return user;

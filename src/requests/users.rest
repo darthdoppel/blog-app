@@ -1,8 +1,7 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQzOTA1ODQsImV4cCI6MTcwNDM5NDE4NH0.kmJZhkh7S6NVJMX2SSDBnxqfX-A2Ftr0PstnOlQxe5s
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQ2NTUzNDksImV4cCI6MTcwNDY1ODk0OX0.E9PVaXa1R9OFdHkD7PtT3D7xK-913PQe-sZDurfeTPE
 ### Get usuario por ID
 
 GET http://localhost:3000/users/6596ef30363eb2863c18dbd7

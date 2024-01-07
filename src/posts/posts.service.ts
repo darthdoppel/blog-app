@@ -72,22 +72,36 @@ export class PostsService {
     return this.postModel.find({ author: userId }).exec();
   }
 
-  async search(query: string, limit: number = 10): Promise<Post[]> {
-    return this.postModel
+  async search(query: string, limit: number = 10): Promise<Post[] | string> {
+    const results = await this.postModel
       .find({ $text: { $search: query } }, { score: { $meta: "textScore" } })
       .sort({ score: { $meta: "textScore" } })
       .limit(Number(limit))
       .exec();
+
+    if (results.length === 0) {
+      return "No se encontraron resultados";
+    }
+
+    return results;
   }
 
-  async filter(category: string, author: string): Promise<Post[]> {
+  async filter(category: string, author: string): Promise<Post[] | string> {
     const filter = {};
     if (category) {
-      filter["categories"] = category;
+      /// Esto es para que busque en cualquier parte del string
+      filter["categories"] = { $regex: new RegExp(category, "i") };
     }
-    if (author) {
-      filter["author"] = author;
+    if (author && Types.ObjectId.isValid(author)) {
+      filter["author"] = new Types.ObjectId(author);
     }
-    return this.postModel.find(filter).exec();
+
+    const results = await this.postModel.find(filter).exec();
+
+    if (results.length === 0) {
+      return "No results found for your filter.";
+    }
+
+    return results;
   }
 }
