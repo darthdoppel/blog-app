@@ -37,7 +37,7 @@
 
 Una vez que el proyecto está en ejecución, puedes acceder a la documentación completa de la API utilizando Swagger. Esto se encuentra disponible en:
 
-[**http://localhost:3000**](http://localhost:3000/)
+[**http://localhost:3000/api**](http://localhost:3000/api)
 
 ## 🧪 Pruebas
 
