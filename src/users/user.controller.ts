@@ -38,8 +38,7 @@ import { UserResponseDto } from "./dto/user-response.dto";
 @Controller("users")
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  private readonly logger = new Logger(UserController.name);
-
+  private readonly logger = new Logger("UserController");
   ///////
 
   @ApiOperation({
@@ -52,7 +51,7 @@ export class UserController {
     schema: {
       example: {
         id: "6596d4df4abf28b6fd5305c5",
-        name: "Mitski",
+        username: "Mitski",
         email: "Mitski@gmail.com",
         isAdmin: false,
       },
@@ -71,7 +70,7 @@ export class UserController {
     const newUser = await this.userService.create(user);
     return {
       id: newUser._id,
-      name: newUser.name,
+      username: newUser.username,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
     };
@@ -115,7 +114,7 @@ export class UserController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @IsAdmin(true)
   @Get()
-  async findAll(): Promise<Pick<User, "id" | "name" | "email">[]> {
+  async findAll(): Promise<Pick<User, "id" | "username" | "email">[]> {
     return this.userService.findAll();
   }
 
@@ -136,7 +135,7 @@ export class UserController {
   @Get(":id")
   async findOne(
     @Param("id") id: string,
-  ): Promise<Pick<User, "id" | "name" | "email">> {
+  ): Promise<Pick<User, "id" | "username" | "email">> {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException("ID de usuario inválido");
     }
@@ -146,7 +145,7 @@ export class UserController {
     }
     return {
       id: user._id,
-      name: user.name,
+      username: user.username,
       email: user.email,
     };
   }

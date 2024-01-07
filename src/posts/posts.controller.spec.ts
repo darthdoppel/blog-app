@@ -44,7 +44,7 @@ describe("PostsController (e2e)", () => {
 
   it("/posts/:id (GET)", () => {
     return request(app.getHttpServer())
-      .get("/posts/658dc74e74722faf97232caa")
+      .get("/posts/6596f1fa8fb58425f0f95fc6")
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });
@@ -92,7 +92,7 @@ describe("PostsController (e2e)", () => {
 
     // Make request with non-author token and expect 403
     return request(app.getHttpServer())
-      .delete("/posts/658dc74e74722faf97232caa")
+      .delete("/posts/6596f1e78fb58425f0f95fba")
       .set("Authorization", `Bearer ${nonAuthorToken}`)
       .expect(401);
   });
@@ -108,7 +108,7 @@ describe("PostsController (e2e)", () => {
 
     // Make request with author token and expect 200
     return request(app.getHttpServer())
-      .patch("/posts/658dc74e74722faf97232caa")
+      .patch("/posts/6596f1f18fb58425f0f95fc2")
       .set("Authorization", `Bearer ${authorToken}`)
       .send({
         title: "Test Post",
@@ -129,7 +129,7 @@ describe("PostsController (e2e)", () => {
 
     // Make request with non-author token and expect 403
     return request(app.getHttpServer())
-      .patch("/posts/658dc74e74722faf97232caa")
+      .patch("/posts/6596f1f18fb58425f0f95fc2")
       .set("Authorization", `Bearer ${nonAuthorToken}`)
       .send({
         title: "Test Post",
@@ -142,7 +142,7 @@ describe("PostsController (e2e)", () => {
   // Search posts by title, content, etc.
   it("/posts/search (GET)", () => {
     return request(app.getHttpServer())
-      .get("/posts/search?q=tostada")
+      .get("/posts/search?q=flerken")
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });
@@ -158,7 +158,7 @@ describe("PostsController (e2e)", () => {
   // GET posts by author
   it("/posts/users/:userId (GET)", () => {
     return request(app.getHttpServer())
-      .get("/posts/user/658d99d70d8cc33e9c252d18")
+      .get("/posts/user/6596f0a98fb58425f0f95f7d")
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });

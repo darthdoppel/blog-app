@@ -30,7 +30,7 @@ describe("UserController (e2e)", () => {
     const createResponse = await request(app.getHttpServer())
       .post("/users")
       .send({
-        name: "Test User",
+        username: "Test User",
         password: "12341234",
         email: "test@gmail.com",
       });
@@ -54,7 +54,7 @@ describe("UserController (e2e)", () => {
 
   it("/users/:id (GET)", () => {
     return request(app.getHttpServer())
-      .get("/users/658d97b1ed4b40166c4a0c00")
+      .get("/users/6596f0a98fb58425f0f95f7d")
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });
@@ -84,7 +84,7 @@ describe("UserController (e2e)", () => {
 
     // Make request with non-admin token and expect 200
     return request(app.getHttpServer())
-      .get("/users/658d97b1ed4b40166c4a0c00")
+      .get("/users/6596f0a98fb58425f0f95f7d")
       .set("Authorization", `Bearer ${nonAdminToken}`)
       .expect(200);
   });

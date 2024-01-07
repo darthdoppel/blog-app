@@ -3,17 +3,19 @@
 
 POST http://localhost:3000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzgzMDMyLCJleHAiOjE3MDQzODY2MzJ9.IgM-WWItiDy_db0DBT7OUcWjnDubKSxAI2PVhnfDNVU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZjBhOThmYjU4NDI1ZjBmOTVmN2QiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA0MzkxMDE2LCJleHAiOjE3MDQzOTQ2MTZ9.QWFwleycgBxGHAOwr-TlOIF5uKsv3X9FewhkQ5Q2cfs
 
 {
-    "title": "Post de Admin de prueba",
-    "content": "Este es un mensaje del Admin",
-    "categories": ["nature", "animals"]
+    "title": "Flerken y su Amistad con el Pájaro del Vecino",
+    "content": "Flerken hizo un nuevo amigo hoy, un pájaro curioso que se posó en su ventana. Una amistad inesperada.",
+    "categories": ["friendship", "animals"]
 }
+
+
 
 ### Obtener todos los posts con paginación
 
-GET http://localhost:3000/posts?limit=10
+GET http://localhost:3000/posts
 
 ### Obtener un post por id
 
@@ -31,8 +33,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 
 ### Eliminar un post por id
 
-DELETE http://localhost:3000/posts/6595aee3cd62ee1aac17b298
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzA4NDY0LCJleHAiOjE3MDQzMTIwNjR9.rQtAvNOz3vcpGgy8EpdjsH0drafp9MEIy-VDrRq4wTU
+DELETE http://localhost:3000/posts/6596dca458ce2b4d044a0e55
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQzOTA1ODQsImV4cCI6MTcwNDM5NDE4NH0.kmJZhkh7S6NVJMX2SSDBnxqfX-A2Ftr0PstnOlQxe5s
 
 ### Obtener todos los posts de un autor
 

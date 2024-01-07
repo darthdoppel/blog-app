@@ -10,7 +10,7 @@ import { JwtService } from "@nestjs/jwt";
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<User>,
+    @InjectModel("User") private userModel: Model<User>,
     private jwtService: JwtService,
   ) {}
 
@@ -25,8 +25,8 @@ export class UserService {
     };
   }
 
-  async findAll(): Promise<Pick<User, "id" | "name" | "email">[]> {
-    return this.userModel.find().select("_id name email").exec();
+  async findAll(): Promise<Pick<User, "id" | "username" | "email">[]> {
+    return this.userModel.find().select("_id username email").exec();
   }
 
   async findAllAdmin(): Promise<User[]> {
@@ -47,7 +47,7 @@ export class UserService {
   }
 
   async findOneByUsername(username: string): Promise<User | undefined> {
-    return this.userModel.findOne({ name: username });
+    return this.userModel.findOne({ username: username });
   }
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
@@ -55,8 +55,8 @@ export class UserService {
     if (!user) {
       throw new Error("User not found");
     }
-    if (updateUserDto.name) {
-      user.name = updateUserDto.name;
+    if (updateUserDto.username) {
+      user.username = updateUserDto.username;
     }
     if (updateUserDto.email) {
       user.email = updateUserDto.email;

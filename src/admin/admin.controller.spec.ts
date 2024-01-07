@@ -36,7 +36,7 @@ describe("PostsController (e2e)", () => {
     const createResponse = await request(app.getHttpServer())
       .post("/users")
       .send({
-        name: "Test User",
+        username: "Test User",
         password: "12341234",
         email: "testuser@gmail.com",
       });

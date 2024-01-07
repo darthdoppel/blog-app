@@ -10,7 +10,7 @@ export class User extends Document {
     description: "Nombre del usuario",
   })
   @Prop({ required: true })
-  name: string;
+  username: string;
 
   @ApiProperty({
     required: true,

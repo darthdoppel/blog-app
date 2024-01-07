@@ -1,7 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { UserService } from "./user.service";
 import { getModelToken } from "@nestjs/mongoose";
-import { User } from "./user.schema";
 import { JwtService } from "@nestjs/jwt";
 
 describe("UserService", () => {
@@ -25,7 +24,7 @@ describe("UserService", () => {
       providers: [
         UserService,
         {
-          provide: getModelToken(User.name),
+          provide: getModelToken("User"),
           useFactory: mockUserModel,
         },
         {
@@ -36,7 +35,7 @@ describe("UserService", () => {
     }).compile();
 
     userService = module.get<UserService>(UserService);
-    userModel = module.get(getModelToken(User.name));
+    userModel = module.get(getModelToken("User"));
   });
 
   it("should be defined", () => {
@@ -48,7 +47,7 @@ describe("UserService", () => {
       const userId = "someId";
       const expectedUser = {
         _id: userId,
-        name: "Test User",
+        username: "Test User",
         email: "test@example.com",
         password: "hashedpassword",
       };
