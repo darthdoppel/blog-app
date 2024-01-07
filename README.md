@@ -6,12 +6,6 @@
     <p>Proyecto final Bootcamp de JavaScript en el Backend - Código Facilito</p>
 </div>
 
-<div align="center">
-    <a href="#" target="_blank">Preview</a>
-    <span>&nbsp;✦&nbsp;</span>
-    <a href="#-getting-started">Empezar</a>
-</div>
-
 ## 🛠️ Stack
 - [**NestJS**](https://nestjs.com/) - A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
 
@@ -24,8 +18,6 @@
     ```
 
 2. **Instalar las dependencias:**
-
-    - Utilizamos npm para instalar y gestionar las dependencias.
 
     ```bash
     npm install
@@ -45,9 +37,7 @@
 
 Una vez que el proyecto está en ejecución, puedes acceder a la documentación completa de la API utilizando Swagger. Esto se encuentra disponible en:
 
-```bash
-    http://localhost:3000/api
-    ```
+[**http://localhost:3000**](http://localhost:3000/)
 
 ## 🧪 Pruebas
 
