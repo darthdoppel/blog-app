@@ -34,15 +34,12 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 ### Configuración del Archivo `.env`
 
-El proyecto utiliza variables de entorno para manejar configuraciones sensibles y específicas del entorno. Debes crear un archivo `.env` en la raíz del proyecto para almacenar estas variables:
+El proyecto utiliza variables de entorno para gestionar configuraciones sensibles. Debes crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
 
-1. **Crea un archivo `.env` en la raíz del proyecto.**
+`JWT_SECRET=tu_clave_secreta_aquí`
 
-2. **Agrega la siguiente variable con una clave secreta para JWT:**
+Reemplaza `tu_clave_secreta_aquí` con una clave secreta segura. Utiliza un generador de claves o crea una cadena aleatoria larga y compleja. **Evita usar claves de ejemplo en un entorno de producción.**
 
-JWT_SECRET=tu_clave_secreta_aquí
-
-Por ejemplo, puedes generar una clave secreta utilizando un generador de claves o simplemente crear una cadena aleatoria larga y compleja. **No uses la clave de ejemplo en producción.**
 
 ### Iniciar el Proyecto
 
@@ -78,6 +75,7 @@ Aquí puedes ver una captura de pantalla de la documentación de Swagger, que of
     <img src="public/SwaggerScreenshot.png" width="700px"/>
 </div>
 
+
 Para acceder a esta documentación completa, visita: [http://localhost:3000/api](http://localhost:3000/api).
 
 ## 🌟 Ejemplos de Uso
@@ -108,7 +106,7 @@ Te responderá con un token, que luego se puede utilizar para las pruebas de Adm
 
 ## 📦 Conexión a la Base de Datos MongoDB
 
-Este proyecto se conecta a una base de datos MongoDB preconfigurada, que he creado específicamente para este proyecto. La cadena de conexión a esta base de datos ya está configurada en el código del proyecto.
+Este proyecto se conecta a una base de datos MongoDB preconfigurada. La cadena de conexión está incorporada en el código del proyecto, lo que elimina la necesidad de configuraciones adicionales para la conexión con la base de datos.
 
 ### 🔗 Uso de la Base de Datos Preconfigurada
 
