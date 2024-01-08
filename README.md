@@ -53,11 +53,13 @@ Asegúrate de tener instalado Node.js (versión 12.x o superior) y MongoDB. Desp
 
 ## 📘 Documentación Swagger
 
-La documentación detallada de todos los endpoints de la API está disponible a través de Swagger. Esto incluye descripciones de los endpoints, parámetros requeridos, formatos de solicitud y respuesta, y códigos de estado HTTP. Puedes acceder a esta documentación en:
+Aquí puedes ver una captura de pantalla de la documentación de Swagger, que ofrece una descripción detallada de todos los endpoints de la API:
 
-[http://localhost:3000/api](http://localhost:3000/api)
+<div align="center">
+    <img src="public/SwaggerScreenshot.png" width="700px"/>
+</div>
 
-Esta documentación es tu guía de referencia para integrar y consumir la API.
+Para acceder a esta documentación completa, visita: [http://localhost:3000/api](http://localhost:3000/api).
 
 ## 🌟 Ejemplos de Uso
 
