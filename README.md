@@ -1,7 +1,7 @@
 <div align="center">
     <img src="public/LogoFinal.png" height="150px"/> 
     <h1>El Blog de Leandro - Backend API</h1>
-    <p>Este proyecto representa el backend de "El Blog de Leandro", diseñado como una API RESTful...</p>
+    <p>Este proyecto representa el backend de "El Blog de Leandro", diseñado como una API RESTful que puede ser consumida por aplicaciones frontend. Es el resultado de mi proyecto final en el Bootcamp de JavaScript en el Backend de Código Facilito. Este backend maneja la autenticación, la gestión de usuarios y posts, y ofrece funcionalidades específicas de administración.</p>
 </div>
 
 ## Tabla de Contenidos
