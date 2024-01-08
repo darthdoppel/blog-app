@@ -17,26 +17,44 @@
 
 ## 🏗️ Arquitectura y Tecnologías
 
-El backend está construido siguiendo el patrón de diseño MVC, utilizando:
+- **NestJS**: Un framework progresivo de Node.js para construir aplicaciones de servidor eficientes y escalables, con un enfoque en la modularidad y la reutilización de código.
+- **MongoDB**: Como base de datos para almacenar usuarios y posts, aprovechando su flexibilidad y rendimiento en el manejo de datos en formato JSON.
+- **JWT (JSON Web Tokens)**: Utilizado para la autenticación y autorización de usuarios, garantizando la seguridad y la integridad de las sesiones de usuario.
 
-- **NestJS**: Un framework progresivo de Node.js para construir aplicaciones de servidor eficientes y escalables.
-- **MongoDB**: Como base de datos para almacenar usuarios y posts.
-- **JWT (JSON Web Tokens)**: Para la autenticación y autorización de usuarios.
 
 ## ⚙️ Configuración de Entorno y Requisitos
 
-Asegúrate de tener instalado Node.js (versión 12.x o superior) y MongoDB. Después de clonar el repositorio, sigue estos pasos para configurar tu entorno de desarrollo:
+Para poner en marcha el proyecto, es necesario tener instaladas ciertas herramientas y configurar adecuadamente el entorno de desarrollo. A continuación, se detallan los pasos y requisitos necesarios:
 
-1. Instalar dependencias con `npm install`.
-2. Configura las variables de entorno necesarias en un archivo `.env`, ya que utilizamos JWT_SECRET.
-3. Iniciar el servidor de desarrollo con `npm run start:dev`.
+### Requisitos Previos
+
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
+
+- **Node.js**: Versión 16.x o superior. Node.js es esencial para ejecutar el código del servidor. Puedes descargarlo e instalarlo desde [aquí](https://nodejs.org/).
+
+### Configuración del Archivo `.env`
+
+El proyecto utiliza variables de entorno para manejar configuraciones sensibles y específicas del entorno. Debes crear un archivo `.env` en la raíz del proyecto para almacenar estas variables:
+
+1. **Crea un archivo `.env` en la raíz del proyecto.**
+
+2. **Agrega la siguiente variable con una clave secreta para JWT:**
+
+JWT_SECRET=tu_clave_secreta_aquí
+
+Por ejemplo, puedes generar una clave secreta utilizando un generador de claves o simplemente crear una cadena aleatoria larga y compleja. **No uses la clave de ejemplo en producción.**
+
+### Iniciar el Proyecto
+
+Una vez que hayas configurado el entorno y los requisitos previos, sigue las instrucciones en la sección [🚀 Empezar](#-empezar) para clonar el repositorio e iniciar el servidor de desarrollo.
+
 
 ## 🚀 Empezar
 
 1. **Clonar el repositorio:**
 
     ```bash
-    git clone git@github.com:darthdoppel/blog-app.git
+    git clone https://github.com/darthdoppel/blog-app.git
     ```
 
 2. **Instalar las dependencias:**
@@ -50,6 +68,7 @@ Asegúrate de tener instalado Node.js (versión 12.x o superior) y MongoDB. Desp
     ```bash
     npm run start:dev
     ```
+
 
 ## 📘 Documentación Swagger
 
