@@ -26,9 +26,7 @@
 
 Para poner en marcha el proyecto, es necesario tener instaladas ciertas herramientas y configurar adecuadamente el entorno de desarrollo. A continuación, se detallan los pasos y requisitos necesarios:
 
-### Requisitos Previos
-
-Antes de comenzar, asegúrate de tener instalado lo siguiente:
+### Requisitos previos
 
 - **Node.js**: Versión 16.x o superior. Node.js es esencial para ejecutar el código del servidor. Puedes descargarlo e instalarlo desde [aquí](https://nodejs.org/).
 
