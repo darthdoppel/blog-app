@@ -1,19 +1,19 @@
 <div align="center">
     <img src="public/LogoFinal.png" height="150px"/> 
-    <h1>El Blog de Leandro - Backend API</h1>
+    <h1>📘 El Blog de Leandro - Backend API</h1>
     <p>Este proyecto representa el backend de "El Blog de Leandro", diseñado como una API RESTful que puede ser consumida por aplicaciones frontend. Es el resultado de mi proyecto final en el Bootcamp de JavaScript en el Backend de Código Facilito. Este backend maneja la autenticación, la gestión de usuarios y posts, y ofrece funcionalidades específicas de administración.</p>
 </div>
 
-## Tabla de Contenidos
-- [Arquitectura y Tecnologías](#-arquitectura-y-tecnologías)
-- [Configuración de Entorno y Requisitos](#-configuración-de-entorno-y-requisitos)
-- [Empezar](#-empezar)
-- [Documentación Swagger](#-documentación-swagger)
-- [Ejemplos de Uso](#-ejemplos-de-uso)
-- [Autenticación y Autorización](#-autenticación-y-autorización)
-- [Acceso de Administrador](#-acceso-de-administrador)
-- [Conexión a la Base de Datos MongoDB](#-conexión-a-la-base-de-datos-mongodb)
-- [Testing](#-testing)
+## 📋 Tabla de Contenidos
+- [🏗️ Arquitectura y Tecnologías](#-arquitectura-y-tecnologías)
+- [⚙️ Configuración de Entorno y Requisitos](#️-configuración-de-entorno-y-requisitos)
+- [🚀 Empezar](#-empezar)
+- [📘 Documentación Swagger](#-documentación-swagger)
+- [🌟 Ejemplos de Uso](#-ejemplos-de-uso)
+- [🔒 Autenticación y Autorización](#-autenticación-y-autorización)
+- [🚀 Acceso de Administrador](#-acceso-de-administrador)
+- [📦 Conexión a la Base de Datos MongoDB](#-conexión-a-la-base-de-datos-mongodb)
+- [🧪 Testing](#-testing)
 
 ## 🏗️ Arquitectura y Tecnologías
 
@@ -73,7 +73,7 @@ El sistema utiliza JWT para la autenticación y autorización de los usuarios. L
 
 Para facilitar las pruebas y la demostración, el siguiente conjunto de credenciales puede utilizarse para acceder al sistema con privilegios de administrador:
 
-### 🔒 Credenciales de Administrador para pruebas
+### 🔑 Credenciales de Administrador para pruebas
 
 ```json
 POST http://localhost:3000/users/login
@@ -91,7 +91,7 @@ Te responderá con un token, que luego se puede utilizar para las pruebas de Adm
 
 Este proyecto se conecta a una base de datos MongoDB preconfigurada, que he creado específicamente para este proyecto. La cadena de conexión a esta base de datos ya está configurada en el código del proyecto.
 
-### Uso de la Base de Datos Preconfigurada
+### 🔗 Uso de la Base de Datos Preconfigurada
 
 Para utilizar esta base de datos:
 
@@ -106,4 +106,4 @@ Para utilizar esta base de datos:
 
 ## 🧪 Testing
 
-Para ejecutar pruebas automatizadas, utiliza el comando `npm test`. Estas pruebas te ayudarán a verificar que los diferentes componentes de la API funcionan como se espera.
+Las pruebas automatizadas implementadas en este proyecto son principalmente pruebas e2e, diseñadas para simular escenarios de uso reales y probar la API en su conjunto. Para su utilización, correr el comando `npm test`.
