@@ -47,13 +47,14 @@ export class UserController {
   })
   @ApiResponse({
     status: 200,
-    description: "El usuario ha sido creado correctamente.",
+    description:
+      "El usuario ha sido creado correctamente. Por defecto isAdmin es false, es decir, si no se especifica, el usuario no será administrador.",
     schema: {
       example: {
         id: "6596d4df4abf28b6fd5305c5",
         username: "Mitski",
         email: "Mitski@gmail.com",
-        isAdmin: false,
+        isAdmin: true,
       },
     },
   })
