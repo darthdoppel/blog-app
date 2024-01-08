@@ -86,6 +86,11 @@ export class UserController {
   @ApiResponse({
     status: 201,
     description: "El usuario ha sido logueado correctamente.",
+    schema: {
+      example: {
+        access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+      },
+    },
   })
   @ApiResponse({
     status: 401,

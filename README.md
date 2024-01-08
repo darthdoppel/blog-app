@@ -14,7 +14,6 @@
 - [Acceso de Administrador](#-acceso-de-administrador)
 - [Conexión a la Base de Datos MongoDB](#-conexión-a-la-base-de-datos-mongodb)
 - [Testing](#-testing)
-- [Contacto](#📬-contacto)
 
 ## 🏗️ Arquitectura y Tecnologías
 
@@ -54,13 +53,11 @@ Asegúrate de tener instalado Node.js (versión 12.x o superior) y MongoDB. Desp
 
 ## 📘 Documentación Swagger
 
-Aquí puedes ver una captura de pantalla de la documentación de Swagger, que ofrece una descripción detallada de todos los endpoints de la API:
+La documentación detallada de todos los endpoints de la API está disponible a través de Swagger. Esto incluye descripciones de los endpoints, parámetros requeridos, formatos de solicitud y respuesta, y códigos de estado HTTP. Puedes acceder a esta documentación en:
 
-<div align="center">
-    <img src="public/SwaggerScreenshot.png" width="700px"/>
-</div>
+[http://localhost:3000/api](http://localhost:3000/api)
 
-Para acceder a esta documentación completa, visita: [http://localhost:3000/api](http://localhost:3000/api).
+Esta documentación es tu guía de referencia para integrar y consumir la API.
 
 ## 🌟 Ejemplos de Uso
 
@@ -108,7 +105,3 @@ Para utilizar esta base de datos:
 ## 🧪 Testing
 
 Para ejecutar pruebas automatizadas, utiliza el comando `npm test`. Estas pruebas te ayudarán a verificar que los diferentes componentes de la API funcionan como se espera.
-
-## 📬 Contacto
-
-Puedes contactarme en [leandromartinm7@gmail.com](mailto:leandromartinm7@gmail.com).

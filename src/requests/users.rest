@@ -1,11 +1,12 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQ2NTUzNDksImV4cCI6MTcwNDY1ODk0OX0.E9PVaXa1R9OFdHkD7PtT3D7xK-913PQe-sZDurfeTPE
+Authorization: Bearer 
+
 ### Get usuario por ID
 
 GET http://localhost:3000/users/6596ef30363eb2863c18dbd7
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0MzkwNDM0LCJleHAiOjE3MDQzOTQwMzR9.c-WZqSrO0wTzMwhLeOkjBmXpkv_XgGnoz0svLPMkkp8
+Authorization: Bearer 
 
 
 ### Login de usuario admin
@@ -43,8 +44,7 @@ Content-Type: application/json
 
 PATCH http://localhost:3000/users/6596e0438d611c20b195b65a
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoiNjU4ZDlhMTA3NjRiZDljNTg2MWMxNTZmIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzAzNzg4NTczLCJleHAiOjE3MDM3OTIxNzN9.xK9l0bBp355uOcw9U966VhvSGYRk8EYAO9OiOM5N6ps
-
+Authorization: Bearer
 {
     "name": "Flerken",
     "email": "flerken@gmail.com"
@@ -53,4 +53,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 ### DELETE para borrar un usuario
 
 DELETE http://localhost:3000/users/658d9a10764bd9c5861c156f
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQzOTA1ODQsImV4cCI6MTcwNDM5NDE4NH0.kmJZhkh7S6NVJMX2SSDBnxqfX-A2Ftr0PstnOlQxe5s
+Authorization: Bearer 
