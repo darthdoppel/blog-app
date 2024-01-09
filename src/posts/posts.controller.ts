@@ -11,6 +11,7 @@ import {
   NotFoundException,
   UnauthorizedException,
   Query,
+  BadRequestException,
 } from "@nestjs/common";
 import { PostsService, RequestWithUser } from "./posts.service";
 import { CreatePostDto } from "./dto/create-post.dto";
@@ -95,6 +96,29 @@ export class PostsController {
   @ApiResponse({
     status: 200,
     description: "Devuelve una lista de posts.",
+    schema: {
+      example: {
+        message: "Se encontraron 2 posts.",
+        data: [
+          {
+            _id: "6596f1de8fb58425f0f95fb6",
+            title: "Aventuras de Flerken en el Jardín",
+            content:
+              "Hoy, Flerken exploró el jardín, cazando mariposas y trepando árboles. ¡Un día lleno de aventuras!",
+            categories: ["nature", "animals"],
+            author: "6596f0a98fb58425f0f95f7d",
+            __v: 0,
+          },
+          {
+            _id: "6596f1de8fb58425f0f95fb7",
+            title: "Flerken se queda dormido",
+            content:
+              "Después de un día lleno de aventuras, Flerken se queda dormido en el sofá.",
+            categories: ["animals"],
+          },
+        ],
+      },
+    },
   })
   @ApiQuery({
     name: "limit",
@@ -103,8 +127,13 @@ export class PostsController {
     type: Number,
   })
   @Get()
-  async findAll(@Query("limit") limit: number = 10): Promise<Post[]> {
-    return this.postsService.findAll(limit);
+  async findAll(
+    @Query("limit") limit: number = 10,
+  ): Promise<{ message: string; data: Post[] }> {
+    const result = await this.postsService.findAll(limit);
+    const message = `Se encontraron ${result.count} posts.`;
+
+    return { message, data: result.posts };
   }
 
   ///////
@@ -141,7 +170,8 @@ export class PostsController {
 
   @ApiOperation({
     summary: "Filtrar posts.",
-    description: "No es necesario completar ambos campos. Solo uno es válido.",
+    description:
+      "No es necesario completar ambos campos. Solo uno es válido, pero al menos uno es necesario.",
   })
   @ApiResponse({
     status: 200,
@@ -165,6 +195,11 @@ export class PostsController {
     @Query("category") category: string,
     @Query("author") author: string,
   ): Promise<Post[] | string> {
+    if (!category && !author) {
+      throw new BadRequestException(
+        "Debe incluir al menos un criterio de filtrado: 'category' o 'author'.",
+      );
+    }
     return this.postsService.filter(category, author);
   }
 

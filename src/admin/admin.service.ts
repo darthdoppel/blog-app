@@ -18,6 +18,6 @@ export class AdminService {
   }
 
   async getAllPosts() {
-    return this.postsService.findAll();
+    return this.postsService.findAll(10);
   }
 }

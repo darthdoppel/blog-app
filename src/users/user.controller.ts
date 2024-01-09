@@ -114,7 +114,17 @@ export class UserController {
       "Este endpoint solo es accesible para usuarios con rol de administrador.",
   })
   @ApiResponse({ status: 200, description: "Devuelve todos los usuarios." })
-  @ApiResponse({ status: 401, description: "No autorizado." })
+  @ApiResponse({
+    status: 401,
+    description: "No autorizado.",
+    schema: {
+      example: {
+        message: "Autorización requerida. Por favor, inicie sesión.",
+        error: "Unauthorized",
+        statusCode: 401,
+      },
+    },
+  })
   @ApiResponse({ status: 404, description: "Usuarios no encontrados." })
   @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard, RolesGuard)
@@ -127,7 +137,17 @@ export class UserController {
   ////////
 
   @ApiOperation({ summary: "Obtener usuario por ID" })
-  @ApiResponse({ status: 200, description: "Devuelve el usuario." })
+  @ApiResponse({
+    status: 200,
+    description: "Devuelve el usuario.",
+    schema: {
+      example: {
+        id: "6596d4df4abf28b6fd5305c5",
+        username: "Mitski",
+        email: "mitski@gmail.com",
+      },
+    },
+  })
   @ApiResponse({ status: 401, description: "No autorizado." })
   @ApiResponse({ status: 404, description: "Usuario no encontrado." })
   @ApiParam({

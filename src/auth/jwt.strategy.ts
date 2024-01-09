@@ -21,9 +21,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: any) {
     if (!payload) {
-      throw new UnauthorizedException(
-        "Tienes que estar logeado para crear un nuevo post",
-      );
+      throw new UnauthorizedException("Autenticación requerida");
     }
 
     const user = await this.userService.findOne(payload.sub);

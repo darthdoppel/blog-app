@@ -44,8 +44,11 @@ export class PostsService {
     return createdPost.save();
   }
 
-  async findAll(limit: number = 10): Promise<Post[]> {
-    return this.postModel.find().limit(Number(limit)).exec();
+  async findAll(limit: number = 10): Promise<{ posts: Post[]; count: number }> {
+    const posts = await this.postModel.find().limit(limit).exec();
+    const count = posts.length;
+
+    return { posts, count };
   }
 
   async findOne(id: string): Promise<Post> {
@@ -89,17 +92,24 @@ export class PostsService {
   async filter(category: string, author: string): Promise<Post[] | string> {
     const filter = {};
     if (category) {
-      /// Esto es para que busque en cualquier parte del string
       filter["categories"] = { $regex: new RegExp(category, "i") };
     }
-    if (author && Types.ObjectId.isValid(author)) {
-      filter["author"] = new Types.ObjectId(author);
+    if (author) {
+      if (Types.ObjectId.isValid(author)) {
+        const authorExists = await this.userService.findOne(author);
+        if (!authorExists) {
+          throw new NotFoundException(`Autor con ID ${author} no encontrado`);
+        }
+        filter["author"] = new Types.ObjectId(author);
+      } else {
+        throw new BadRequestException(`ID de autor inválido: ${author}`);
+      }
     }
 
     const results = await this.postModel.find(filter).exec();
 
     if (results.length === 0) {
-      return "No results found for your filter.";
+      return "Sin resultados para el filtro aplicado";
     }
 
     return results;

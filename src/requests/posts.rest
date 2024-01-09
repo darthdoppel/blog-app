@@ -3,12 +3,14 @@
 
 POST http://localhost:3000/posts
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWYzMDM2M2ViMjg2M2MxOGRiZDciLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA0NzI5NTIxLCJleHAiOjE3MDQ3MzMxMjF9.8aB1BGo1XRBn9G91Ic-QWSOLQszauMfjwPwxO-dd5x0
 
 {
-    "title": "Flerken y su nuevo amigo",
-    "content": "Flerken nos presenta a su nuevo amigo, Tostada.",
-    "categories": ["friendship", "animals"]
+    "title": "Mitski lanza su nuevo sencillo 'Voces del Anochecer'",
+    "content": "Mitski nos sorprende con su último sencillo, 'Voces del Anochecer'. Una melodía cautivadora que explora los matices de la noche y la introspección.",
+    "categories": ["new release", "music", "singles"]
 }
+
 
 
 

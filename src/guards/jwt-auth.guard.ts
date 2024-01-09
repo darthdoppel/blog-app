@@ -14,7 +14,7 @@ export class JwtAuthGuard extends AuthGuard("jwt") {
         );
       } else {
         throw new UnauthorizedException(
-          "Tienes que estar logeado para crear un nuevo post",
+          "Autorización requerida. Por favor, inicie sesión.",
         );
       }
     }
