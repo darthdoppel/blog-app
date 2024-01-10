@@ -1,4 +1,11 @@
-import { Controller, Get, Delete, Param, UseGuards } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Delete,
+  Param,
+  UseGuards,
+  Query,
+} from "@nestjs/common";
 import { AdminService } from "./admin.service";
 import {
   ApiBearerAuth,
@@ -40,6 +47,8 @@ export class AdminController {
   @ApiResponse({ status: 401, description: "No autorizado." })
   @ApiResponse({ status: 404, description: "Usuario no encontrado." })
   @ApiBearerAuth("JWT")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @IsAdmin(true)
   @Delete("users/:id")
   deleteUser(@Param("id") id: string) {
     return this.adminService.deleteUser(id);
@@ -54,8 +63,10 @@ export class AdminController {
   @ApiResponse({ status: 401, description: "No autorizado." })
   @ApiResponse({ status: 404, description: "Posts no encontrados." })
   @ApiBearerAuth("JWT")
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @IsAdmin(true)
   @Get("posts")
-  getAllPosts() {
-    return this.adminService.getAllPosts();
+  async getAllPosts(@Query("limit") limit: number) {
+    return this.adminService.getAllPosts(limit);
   }
 }

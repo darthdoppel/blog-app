@@ -1,5 +1,5 @@
 // user.service.ts
-import { Injectable } from "@nestjs/common";
+import { ConflictException, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { User } from "./user.schema";
@@ -34,11 +34,19 @@ export class UserService {
   }
 
   async create(user: User) {
+    const foundUser = await this.userModel.findOne({
+      $or: [{ username: user.username }, { email: user.email }],
+    });
+    if (foundUser) {
+      throw new ConflictException("Nombre de usuario o email ya existente");
+    }
+
     const hashedPassword = await bcrypt.hash(user.password, 10);
     const createdUser = new this.userModel({
       ...user,
       password: hashedPassword,
     });
+
     return createdUser.save();
   }
 

@@ -43,12 +43,12 @@ export class UserController {
 
   @ApiOperation({
     summary: "Creación de usuario",
-    description: "Permite a un usuario registrarse en la aplicación.",
+    description:
+      "Permite a un usuario registrarse en la aplicación. Por defecto isAdmin es false, es decir, de no ser especificado, el usuario no tendrá rol de administrador.",
   })
   @ApiResponse({
     status: 200,
-    description:
-      "El usuario ha sido creado correctamente. Por defecto isAdmin es false, es decir, si no se especifica, el usuario no será administrador.",
+    description: "El usuario ha sido creado correctamente.",
     schema: {
       example: {
         id: "6596d4df4abf28b6fd5305c5",
@@ -61,6 +61,13 @@ export class UserController {
   @ApiResponse({
     status: 409,
     description: "El usuario ya existe.",
+    schema: {
+      example: {
+        message: "Nombre de usuario o email ya existente",
+        error: "Conflict",
+        statusCode: 409,
+      },
+    },
   })
   @ApiBody({
     description: "Datos del usuario a crear",

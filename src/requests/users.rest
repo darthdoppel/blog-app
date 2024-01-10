@@ -1,12 +1,12 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQ5MDg3MjksImV4cCI6MTcwNDkxMjMyOX0.ln9ocJbVvAILi-Qmov8gtiCzXc4TTsKtVLmNL0M33yA
 
 ### Get usuario por ID
 
 GET http://localhost:3000/users/6596ef30363eb2863c18dbd7
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQ5MDg3MjksImV4cCI6MTcwNDkxMjMyOX0.ln9ocJbVvAILi-Qmov8gtiCzXc4TTsKtVLmNL0M33yA
 
 
 ### Login de usuario admin
@@ -15,7 +15,7 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "username": "Admin",
+    "username": "Flerken",
     "password": "12341234"
 }
 
@@ -35,8 +35,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "Tostada",
-    "email": "tostada@gmail.com",
+    "username": "Flerkeno",
+    "email": "flerkeno@gmail.com",
     "password": "12341234"
 }
 
@@ -52,5 +52,5 @@ Authorization: Bearer
 
 ### DELETE para borrar un usuario
 
-DELETE http://localhost:3000/users/658d9a10764bd9c5861c156f
-Authorization: Bearer 
+DELETE http://localhost:3000/users/659ed8dc594e115ada6a8a5c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQ5MDg3MjksImV4cCI6MTcwNDkxMjMyOX0.ln9ocJbVvAILi-Qmov8gtiCzXc4TTsKtVLmNL0M33yA

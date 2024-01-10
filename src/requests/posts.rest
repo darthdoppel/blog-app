@@ -3,20 +3,28 @@
 
 POST http://localhost:3000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWYzMDM2M2ViMjg2M2MxOGRiZDciLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA0NzI5NTIxLCJleHAiOjE3MDQ3MzMxMjF9.8aB1BGo1XRBn9G91Ic-QWSOLQszauMfjwPwxO-dd5x0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTllZDdkMDU5NGUxMTVhZGE2YThhMmQiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA0OTA4OTIzLCJleHAiOjE3MDQ5MTI1MjN9._7WjeexeaBnmdc6y_Q-UJIXy-cw3Q3oXlsk5YuQmQoo
 
 {
-    "title": "Mitski lanza su nuevo sencillo 'Voces del Anochecer'",
-    "content": "Mitski nos sorprende con su último sencillo, 'Voces del Anochecer'. Una melodía cautivadora que explora los matices de la noche y la introspección.",
-    "categories": ["new release", "music", "singles"]
+  "title": "La paz de Flerken durmiendo",
+  "content": "Después de un día lleno de travesuras, Flerken finalmente se ha dormido. Es sorprendente ver lo tranquilo y adorable que puede ser, recogido en una pequeña bola de pelo gris en su cama. Estos momentos de calma son realmente especiales.",
+  "categories": [
+    "relaxation",
+    "cute",
+    "animals"
+  ]
 }
+
+
+
+
 
 
 
 
 ### Obtener todos los posts con paginación
 
-GET http://localhost:3000/posts
+GET http://localhost:3000/posts?limit=20
 
 ### Obtener un post por id
 
@@ -34,8 +42,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 
 ### Eliminar un post por id
 
-DELETE http://localhost:3000/posts/6596dca458ce2b4d044a0e55
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQzOTA1ODQsImV4cCI6MTcwNDM5NDE4NH0.kmJZhkh7S6NVJMX2SSDBnxqfX-A2Ftr0PstnOlQxe5s
+DELETE http://localhost:3000/posts/659af7c5414ee76dba0bfdb7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQ5MDg3MjksImV4cCI6MTcwNDkxMjMyOX0.ln9ocJbVvAILi-Qmov8gtiCzXc4TTsKtVLmNL0M33yA
 
 ### Obtener todos los posts de un autor
 

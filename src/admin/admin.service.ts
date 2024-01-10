@@ -17,7 +17,7 @@ export class AdminService {
     return this.usersService.delete(id);
   }
 
-  async getAllPosts() {
-    return this.postsService.findAll(10);
+  async getAllPosts(limit: number = 10) {
+    return this.postsService.findAll(limit);
   }
 }
