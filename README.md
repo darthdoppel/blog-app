@@ -22,15 +22,19 @@
 - **MongoDB**: Como base de datos para almacenar usuarios y posts, aprovechando su flexibilidad y rendimiento en el manejo de datos en formato JSON.
 - **JWT (JSON Web Tokens)**: Utilizado para la autenticación y autorización de usuarios, garantizando la seguridad y la integridad de las sesiones de usuario.
 
-## 🌍 Disponibilidad en Servidor
+## 🌐 Acceso en Línea a "El Blog de Leandro"
 
-El proyecto también está desplegado y disponible en línea, permitiendo acceder a la API en un entorno de producción. Esto facilita la interacción con la API sin necesidad de configurar el entorno localmente. Puedes acceder al proyecto en vivo en la siguiente URL:
+### Disponibilidad del Backend API
 
-Acceso al Proyecto en el Servidor
-[El Blog de Leandro - Backend API en Vivo](https://blog-leandro.onrender.com/)
-Este despliegue online representa la versión más actualizada del backend de "El Blog de Leandro". Es ideal para probar la API en tiempo real y para demostraciones o pruebas rápidas.
-Acceso a la Documentación en el Servidor
-[El Blog de Leandro - Documentación](https://blog-leandro.onrender.com/api)
+El backend de "El Blog de Leandro" está disponible online y deployado a un servidor (Render), ofreciendo un entorno de producción listo para usar. Este acceso simplifica la interacción con la API, eliminando la necesidad de una configuración local.
+
+**Accede al Proyecto en Vivo:**
+Para explorar la API en funcionamiento, visita: [El Blog de Leandro - Backend API en Vivo](https://blog-leandro.onrender.com/).
+
+### Documentación Disponible en el Servidor
+
+**Accede a la Documentación en Vivo:**
+Para una guía detallada y ejemplos de uso de la API, consultar la documentación en: [El Blog de Leandro - Documentación](https://blog-leandro.onrender.com/api). Aquí encontrarás información completa y actualizada para aprovechar al máximo las capacidades de la API.
 
 
 ## ⚙️ Configuración de Entorno y Requisitos
