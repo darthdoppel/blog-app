@@ -92,7 +92,7 @@ describe("PostsController (e2e)", () => {
 
     // Make request with non-author token and expect 403
     return request(app.getHttpServer())
-      .delete("/posts/6596f1e78fb58425f0f95fba")
+      .delete("/posts/659c1bbfef69075e9d11bbb2")
       .set("Authorization", `Bearer ${nonAuthorToken}`)
       .expect(401);
   });
@@ -108,7 +108,7 @@ describe("PostsController (e2e)", () => {
 
     // Make request with author token and expect 200
     return request(app.getHttpServer())
-      .patch("/posts/6596f1f18fb58425f0f95fc2")
+      .patch("/posts/659ed8d2594e115ada6a8a5a")
       .set("Authorization", `Bearer ${authorToken}`)
       .send({
         title: "Test Post",
@@ -127,9 +127,9 @@ describe("PostsController (e2e)", () => {
 
     const nonAuthorToken = response.body.access_token;
 
-    // Make request with non-author token and expect 403
+    // Make request with non-author token and expect 401
     return request(app.getHttpServer())
-      .patch("/posts/6596f1f18fb58425f0f95fc2")
+      .patch("/posts/659c1bc9ef69075e9d11bbb6")
       .set("Authorization", `Bearer ${nonAuthorToken}`)
       .send({
         title: "Test Post",

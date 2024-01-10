@@ -54,7 +54,7 @@ describe("UserController (e2e)", () => {
 
   it("/users/:id (GET)", () => {
     return request(app.getHttpServer())
-      .get("/users/6596f0a98fb58425f0f95f7d")
+      .get("/users/6596f0ae8fb58425f0f95f7f")
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });
@@ -84,7 +84,7 @@ describe("UserController (e2e)", () => {
 
     // Make request with non-admin token and expect 200
     return request(app.getHttpServer())
-      .get("/users/6596f0a98fb58425f0f95f7d")
+      .get("/users/6596f0ae8fb58425f0f95f7f")
       .set("Authorization", `Bearer ${nonAdminToken}`)
       .expect(200);
   });
