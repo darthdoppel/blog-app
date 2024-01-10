@@ -6,6 +6,7 @@
 
 ## 📋 Tabla de Contenidos
 - [🏗️ Arquitectura y Tecnologías](#-arquitectura-y-tecnologías)
+- [🌍 Disponibilidad en Servidor](#🌍-disponibilidad-en-servidor)
 - [⚙️ Configuración de Entorno y Requisitos](#️-configuración-de-entorno-y-requisitos)
 - [🚀 Empezar](#-empezar)
 - [📘 Documentación Swagger](#-documentación-swagger)
