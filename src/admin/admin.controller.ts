@@ -66,7 +66,7 @@ export class AdminController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @IsAdmin(true)
   @Get("posts")
-  async getAllPosts(@Query("limit") limit: number) {
+  async getAllPosts(@Query("limit") limit: number = 10) {
     return this.adminService.getAllPosts(limit);
   }
 }
