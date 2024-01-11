@@ -172,7 +172,7 @@ export class AdminController {
   })
   @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard)
-  @Delete(":id")
+  @Delete("/posts/:id")
   async remove(
     @Param("id") id: string,
     @Req() req,

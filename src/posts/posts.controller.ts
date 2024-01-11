@@ -82,6 +82,7 @@ export class PostsController {
   @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard)
   @PostMethod()
+  @ApiBody({ type: Post })
   create(@Body() createPostDto: CreatePostDto, @Req() req: RequestWithUser) {
     return this.postsService.create(createPostDto, req);
   }
