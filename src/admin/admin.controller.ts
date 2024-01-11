@@ -24,9 +24,9 @@ import {
 import { JwtAuthGuard } from "../guards/jwt-auth.guard";
 import { RolesGuard } from "../guards/roles.guard";
 import { IsAdmin } from "../decorators/roles.decorator";
-import { Post } from "src/posts/schemas/post.schema";
-import { UpdatePostDto } from "src/posts/dto/update-post.dto";
-import { PostsService } from "src/posts/posts.service";
+import { Post } from "../posts/schemas/post.schema";
+import { UpdatePostDto } from "../posts/dto/update-post.dto";
+import { PostsService } from "../posts/posts.service";
 
 @ApiTags("admin")
 @Controller("admin")
