@@ -282,7 +282,7 @@ export class PostsController {
   @ApiResponse({
     status: 400,
     description:
-      "Solicitud incorrecta. El usuario no existe o los datos proporcionados no son válidos.",
+      "Solicitud incorrecta. El post no existe o los datos proporcionados no son válidos.",
   })
   @ApiResponse({
     status: 401,
