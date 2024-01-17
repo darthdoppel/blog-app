@@ -32,21 +32,31 @@ describe("PostsController (e2e)", () => {
       .expect(200);
   });
 
-  it("should delete a user by id", async () => {
-    const createResponse = await request(app.getHttpServer())
+  it("should delete users by ids", async () => {
+    const createResponse1 = await request(app.getHttpServer())
       .post("/users")
       .send({
-        username: "Test User",
+        username: "Test User1",
         password: "12341234",
-        email: "testuser@gmail.com",
+        email: "testuser1@gmail.com",
       });
 
-    expect(createResponse.status).toBe(201);
+    const createResponse2 = await request(app.getHttpServer())
+      .post("/users")
+      .send({
+        username: "Test User2",
+        password: "12341234",
+        email: "testuser2@gmail.com",
+      });
 
-    const id = createResponse.body.id;
+    expect(createResponse1.status).toBe(201);
+    expect(createResponse2.status).toBe(201);
+
+    const ids = [createResponse1.body.id, createResponse2.body.id];
 
     await request(app.getHttpServer())
-      .delete(`/admin/users/${id}`)
+      .delete("/admin/users")
+      .send(ids)
       .set("Authorization", `Bearer ${token}`)
       .expect(200);
   });
