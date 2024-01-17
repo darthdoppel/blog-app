@@ -1,8 +1,7 @@
 ### GET para traer los usuarios
 
 GET http://localhost:3000/admin/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDQzOTA1ODQsImV4cCI6MTcwNDM5NDE4NH0.kmJZhkh7S6NVJMX2SSDBnxqfX-A2Ftr0PstnOlQxe5s
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDU1MTEzNDksImV4cCI6MTcwNTUxNDk0OX0.NnOIZa8P0Ozzd7JfFJVc2TWgADTRFrJKyzfHwnxl5Pw
 ### GET para traer los usuarios
 
 GET http://localhost:3000/users
@@ -17,3 +16,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkb
 
 GET http://localhost:3000/admin/posts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWYzMDM2M2ViMjg2M2MxOGRiZDciLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA1NTEwNTg4LCJleHAiOjE3MDU1MTQxODh9.QFPaBd5--1zrTriAWV0J-llF0feXrJmdidFse14SyWI
+
+### DELETE mas de un usuario
+
+DELETE http://localhost:3000/admin/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTk2ZWZiMjBkY2M5M2MxYWUxMjcyNjEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDU1MTEzMTUsImV4cCI6MTcwNTUxNDkxNX0.iPrTElKMa9wuPoSCAVwMmi7kZ9kLJpm1a54FXcCbzt4
+Content-Type: application/json
+
+[
+
+]

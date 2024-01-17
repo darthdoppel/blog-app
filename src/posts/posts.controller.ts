@@ -92,7 +92,7 @@ export class PostsController {
   @ApiOperation({
     summary: "Obtener todos los posts",
     description:
-      "Recupera todos los posts con la opción de paginación. Si no se especifica un límite, el valor predeterminado es 10.",
+      "Recupera todos los posts, de todos los usuarios del blog, con la opción de paginación. Si no se especifica un límite, el valor predeterminado es 10.",
   })
   @ApiResponse({
     status: 200,

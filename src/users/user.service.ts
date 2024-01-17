@@ -86,4 +86,8 @@ export class UserService {
     await this.userModel.deleteOne({ _id: id });
     return user;
   }
+
+  async deleteMany(filter: any) {
+    return this.userModel.deleteMany(filter).exec();
+  }
 }
