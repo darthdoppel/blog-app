@@ -46,9 +46,15 @@ export class PostsService {
 
   async findAll(limit: number = 10): Promise<{ posts: Post[]; count: number }> {
     const posts = await this.postModel.find().limit(limit).exec();
+    console.log("findAll", posts);
     const count = posts.length;
 
     return { posts, count };
+  }
+
+  async findByAuthor(author: string, limit: number = 10) {
+    const authorId = new Types.ObjectId(author);
+    return this.postModel.find({ author: authorId }).limit(limit).exec();
   }
 
   async findOne(id: string): Promise<Post> {

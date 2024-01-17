@@ -18,8 +18,13 @@ export class AdminService {
     return this.usersService.delete(id);
   }
 
-  async getAllPosts(limit: number = 10) {
-    return this.postsService.findAll(limit);
+  async getAllPosts(userId: string, limit: number = 10) {
+    const user = await this.usersService.findOne(userId);
+    if (user.isAdmin) {
+      return this.postsService.findAll(limit);
+    } else {
+      return this.postsService.findByAuthor(userId, limit);
+    }
   }
 
   async patchPost(id: string, updateData: Partial<Post>) {

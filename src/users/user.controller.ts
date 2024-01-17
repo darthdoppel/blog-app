@@ -111,7 +111,7 @@ export class UserController {
   @UseGuards(LocalAuthGuard)
   @Post("login")
   async login(@Request() req) {
-    this.logger.log(`El usuario ${req.user._doc.name} ha iniciado sesión`);
+    this.logger.log(`El usuario ${req.user._doc.username} ha iniciado sesión`);
     return this.userService.login(req.user);
   }
 

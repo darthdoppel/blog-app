@@ -28,6 +28,13 @@ import { Post } from "../posts/schemas/post.schema";
 import { UpdatePostDto } from "../posts/dto/update-post.dto";
 import { PostsService } from "../posts/posts.service";
 
+interface RequestWithUser extends Request {
+  user: {
+    id: string;
+    isAdmin: boolean;
+  };
+}
+
 @ApiTags("admin")
 @Controller("admin")
 export class AdminController {
@@ -83,10 +90,13 @@ export class AdminController {
   })
   @ApiBearerAuth("JWT")
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @IsAdmin(true)
   @Get("posts")
-  async getAllPosts(@Query("limit") limit: number = 10) {
-    return this.adminService.getAllPosts(limit);
+  async getAllPosts(
+    @Req() req: RequestWithUser,
+    @Query("limit") limit: number = 10,
+  ) {
+    const authorId = req.user.id;
+    return this.adminService.getAllPosts(authorId, limit);
   }
 
   @ApiOperation({
